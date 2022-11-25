@@ -18,7 +18,7 @@ passport.use('singup', new Strategy({ passReqToCallback: true },
         Users.findOne({ username }, (err, user) => {
             if (user) return done(null, false);
             Users.create({ username, password, email }, (err, user) => {
-                if (err) returndone(err)
+                if (err) return done(err)
                 return done(null, user)
             })
         })
@@ -71,7 +71,7 @@ app.post(
     });
 
 app.post(
-    'singup', passport.authenticate('singup', { failureRedirect: '/error' }),
+    "/singup", passport.authenticate('singup', { failureRedirect: '/error' }),
     (req, res) => {
         res.send({ error: false })
     });
@@ -82,7 +82,7 @@ app.get('/datos', authMDW, (req, res) => {
 })
 
 DBConnect(() => {
-    app.listen(8080, () => console.log("conectado!!"))
+    app.listen(8081, () => console.log("conectado!!"))
 })
 
 

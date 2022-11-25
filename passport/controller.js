@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export function DBConnect(cb){
     mongoose.connect(
-        "mongodb://localhost:27017coder",
+        "mongodb://localhost:27017\coder3",
         (err)=>{
             if (err) cb(err);
         }
